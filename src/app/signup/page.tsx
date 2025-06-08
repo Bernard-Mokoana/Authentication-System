@@ -2,7 +2,8 @@
 import Link from "next/link";
 import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
-import { axios } from "axios";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 export default function SignupPage() {
   const router = useRouter();
@@ -13,12 +14,19 @@ export default function SignupPage() {
   });
   const [buttonDisabled, setButtonDisabled] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
-    const onSignup = async () => {
-    try{
-
-    } catch () {
-      toast.error(error.message);
-    }finally {
+  const onSignup = async () => {
+    try {
+      setLoading(true);
+      const response = await axios.post("/api/users/signup", user);
+      toast.success("Signup successful!");
+      router.push("/login");
+    } catch (error: any) {
+      if (error.response?.data?.message) {
+        toast.error(error.response.message);
+      } else {
+        toast.error("Something went wrong. Please try again.");
+      }
+    } finally {
       setLoading(false);
     }
   };
