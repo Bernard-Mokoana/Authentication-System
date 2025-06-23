@@ -45,29 +45,28 @@ export default function SignupPage() {
   }, [user]);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2 bg-gray-800">
-      <h1>{loading ? "Processing" : "Signup"}</h1>
-      <hr />
-      <label htmlFor="username">username</label>
+    <div className="container mx-auto w-fit h-full p-6 m-20 bg-gray-800 rounded-lg shadow-md flex flex-col justify-center">
+      <h1 className="flex justify-center items-center mb-3 pb-2 font-bold shadow-cyan-100 text-2xl">{loading ? "Processing" : "Signup"}</h1>
+      {/* <label className="" htmlFor="username">username</label> */}
       <input
-        className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600"
+        className="p-2 m-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600"
         id="username"
         type="text"
         value={user.username}
         onChange={(e) => setUser({ ...user, username: e.target.value })}
         placeholder="username"
       />
-      <label htmlFor="email">email</label>
+      {/* <label htmlFor="email">email</label> */}
       <input
-        className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600"
+        className="p-2 m-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600"
         id="email"
         value={user.email}
         onChange={(e) => setUser({ ...user, email: e.target.value })}
         placeholder="email"
       />
-      <label htmlFor="password">password</label>
+      {/* <label htmlFor="password">password</label> */}
       <input
-        className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600"
+        className="p-2 m-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600"
         id="password"
         type="text"
         value={user.password}
@@ -76,11 +75,11 @@ export default function SignupPage() {
       />
       <button
         onClick={onSignup}
-        className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus::border-gray-600"
+        className="p-2 m-2 border border-gray-300 bg-blue-900 shadow-2xl hover:bg-gray-900 rounded-lg mb-4 focus:outline-none focus::border-gray-600"
       >
         {buttonDisabled ? "No signup" : "Signup"}
       </button>
-      <Link href="/login">Visit login page</Link>
+      <Link className="flex items-center justify-center " href="/login">Visit login page</Link>
     </div>
   );
 }
